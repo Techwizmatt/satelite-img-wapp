@@ -1,5 +1,12 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
+import Connector from '@/providers/connector'
+import Router from './router'
 
-createApp(App).use(router).mount('#app')
+const app = createApp(App)
+
+app.use(Router)
+
+app.config.globalProperties.$http = Connector
+
+app.mount('#app')
